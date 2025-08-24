@@ -1,0 +1,140 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+html{
+    scroll-behavior: smooth;
+}
+.page{
+    width: 1200px;
+    margin: 0 auto;
+    max-width: 1250px;
+}
+img{
+    width: 100%;
+    height: 100%;
+    vertical-align: bottom;
+}
+.registration{
+    width: 100%;
+    height: 100vh;
+    background-image: url(images/mk.jpg);
+    background-color: black;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.registration__wrap{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 25px;
+}
+.registrtion__name{
+    width: 300px;
+    height: 50px;
+    border: 3px solid rgb(160, 45, 160);
+    background-image: url(images/input.jpg);
+    background-size: contain;
+    outline: none;
+    padding: 15px;
+    border-radius: 20px;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+}
+.registrtion__name::placeholder{
+    color: white;
+}
+.registration__submit{
+    padding: 15px 40px;
+    background-color: rgb(170, 170, 170);
+    border: 3px solid grey;
+    outline: none;
+    border-radius: 20px;
+    text-decoration: none;
+    font-size: 16px;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    font-family: Roboto;
+}
+.fight{
+    width: 100%;
+    height: 100vh;
+    background-image: url(images/mk3-subway-stage.gif);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding-top: 0.1px;
+    position: relative;
+}
+.fight__wrap{
+    width: 450px;
+    height: 300px;
+}
+.person__info{
+    display: flex;
+    gap: 50px;
+    margin-top: 35px;
+    margin-left: 35px;
+    margin-bottom: 130px;
+    font-size: 18px;
+    color: white;
+    font-weight: bold;
+    letter-spacing: 0.2em;
+    font-family: Roboto;
+}
+.person__info_logo{
+    width: 150px;
+    height: 150px;
+    border-radius: 15px;
+    background-image: url(images/input.jpg);
+    padding: 10px 10px 0 10px;
+    cursor: pointer;
+}
+.person__info_name{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+}
+.fight__player{
+    width: 100px;
+    height: 300px;
+    margin-left: 100px;
+}
+.health{
+    width: 200px;
+    height: 25px;
+    border-radius: 5px;
+    background-color: red;
+    overflow: hidden;
+    position: relative;
+}
+.health-line{
+    width: 100%;
+    height: 100%;
+    background-color: green;
+}
+.person__info_check{
+    position: absolute;
+    right: 35px;
+    top: 35px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    width: 480px;
+}
+.person__info_check img{
+    width: 150px;
+    height: 150px;
+    border-radius: 15px;
+    background-image: url(images/input.jpg);
+    cursor: pointer;
+}
