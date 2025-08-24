@@ -12,39 +12,40 @@
         <main class="main">
             <section class="registration">
                 <div class="registration__wrap">
-                    <input type="text" class="registrtion__name" placeholder="What is Your Name?">
+                    <input type="text" class="registrtion__name" placeholder="What is Your Name?" id="01">
                     <a href="#fight" class="registration__submit">Submit</a>
                 </div>
             </section>
+
             <section class="fight" id="fight">
                 <div class="fight__wrap">
                     <div class="person__info">
-                        <div class="person__info_logo">
-                            <img src="images/persons/sub-logo.png" alt="sub-zero">
+                        <div class="person__info_logo">     
                         </div>
                         <div class="person__info_name">
                             <div class="health">
                                 <div class="health-line"></div>
                             </div>
-                            <span class="name">Name</span>
+                            <p>Name: <span class="name"></span></p>
                             <p>Wins: <span class="wins">0</span></p>
                             <p>Lose: <span class="lose">0</span></p>
                         </div>
                     </div>
                     <div class="fight__player">
-                        <img src="images/persons/sub.gif" alt="sub">
+                        
                     </div>
                     <div class="person__info_check">
-                        <img src="images/persons/kung-logo.png" alt="kung-lao">
-                        <img src="images/persons/liu-logo.png" alt="liu-kang">
-                        <img src="images/persons/night-logo.png" alt="night-wolf">
-                        <img src="images/persons/shan-logo.png" alt="shang-tsung">
-                        <img src="images/persons/sub-logo.png" alt="sub-zero">
-                        <img src="images/persons/syrax-logo.png" alt="syrax">
+                        <img src="images/persons/kung-logo.png" alt="kung-lao" class="person-logo" id="kung">
+                        <img src="images/persons/liu-logo.png" alt="liu-kang" class="person-logo" id="liu">
+                        <img src="images/persons/night-logo.png" alt="night-wolf" class="person-logo" id="night">
+                        <img src="images/persons/shan-logo.png" alt="shang-tsung" class="person-logo" id="shan">
+                        <img src="images/persons/sub-logo.png" alt="sub-zero" class="person-logo" id="sub">
+                        <img src="images/persons/syrax-logo.png" alt="syrax" class="person-logo" id="syrax">
                     </div>
                 </div>
             </section>
         </main>
     </div>
+    <script src="index.js"></script>
 </body>
 </html>
