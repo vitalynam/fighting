@@ -73,10 +73,23 @@ img{
     background-position: center;
     padding-top: 0.1px;
     position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
 }
 .fight__wrap{
-    width: 450px;
-    height: 300px;
+    width: 100%;
+    position: relative;
+}
+.edit-avatar{
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    cursor: pointer;
+    background-color: #fff;
+    border-radius: 3px;
 }
 .person__info{
     display: flex;
@@ -96,7 +109,6 @@ img{
     border-radius: 15px;
     background-image: url(images/input.jpg);
     padding: 10px 10px 0 10px;
-    cursor: pointer;
 }
 .person__info_name{
     display: flex;
@@ -105,8 +117,8 @@ img{
     gap: 15px;
 }
 .fight__player{
-    width: 100px;
-    height: 300px;
+    width: 150px;
+    height: 350px;
     margin-left: 100px;
 }
 .health{
@@ -130,6 +142,11 @@ img{
     flex-wrap: wrap;
     gap: 15px;
     width: 480px;
+    transition: all ease-in-out .5s;
+    transform: translateX(700px);
+}
+.person__info_check.active{
+    transform: translateX(0px);
 }
 .person__info_check img{
     width: 150px;
@@ -137,4 +154,32 @@ img{
     border-radius: 15px;
     background-image: url(images/input.jpg);
     cursor: pointer;
+}
+.enemy-wrap{
+    width: auto;
+    margin-right: 35px;
+    transition: all ease-in-out .5s;
+    opacity: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+.enemy-wrap.active{
+    opacity: 0;
+}
+.enemy__info_logo{
+    width: 150px;
+    height: 150px;
+    border-radius: 15px;
+    background-image: url(images/input.jpg);
+    padding: 10px 10px 0 10px;
+    transform: scaleX(-1);
+}
+.enemy__player{
+    transform: scaleX(-1);
+    width: 150px;
+    height: 350px;
+}
+#enemy-health{
+    transform: scaleX(-1);
 }

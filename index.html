@@ -19,12 +19,16 @@
 
             <section class="fight" id="fight">
                 <div class="fight__wrap">
+                    <img src="images/pencil.svg" alt="edit avatar" class="edit-avatar">
                     <div class="person__info">
-                        <div class="person__info_logo">     
+
+                        <div class="person__info_logo">
+                            <img src="images/persons/sub-logo.png" alt="sub-zero">
                         </div>
+
                         <div class="person__info_name">
-                            <div class="health">
-                                <div class="health-line"></div>
+                            <div class="health" id="health">
+                                <div class="health-line" id="health-line"></div>
                             </div>
                             <p>Name: <span class="name"></span></p>
                             <p>Wins: <span class="wins">0</span></p>
@@ -32,9 +36,28 @@
                         </div>
                     </div>
                     <div class="fight__player">
-                        
+                        <img src="images/persons/sub.gif" alt="sub-zero">
                     </div>
-                    <div class="person__info_check">
+                </div>
+
+                <!-- SETINGS -->
+                
+                <div class="enemy-wrap">
+                    <div class="person__info">
+                        <div class="health" id="enemy-health">
+                            <div class="health-line" id="enemy-health-line"></div>
+                        </div>
+                        <div class="enemy__info_logo">
+                            <img src="images/persons/sub-logo.png" alt="sub-zero">
+                        </div>
+                    </div>
+
+                    <div class="enemy__player">
+                        <img src="images/persons/sub.gif" alt="sub-zero">
+                    </div>
+                </div>
+
+                <div class="person__info_check">
                         <img src="images/persons/kung-logo.png" alt="kung-lao" class="person-logo" id="kung">
                         <img src="images/persons/liu-logo.png" alt="liu-kang" class="person-logo" id="liu">
                         <img src="images/persons/night-logo.png" alt="night-wolf" class="person-logo" id="night">
@@ -42,7 +65,6 @@
                         <img src="images/persons/sub-logo.png" alt="sub-zero" class="person-logo" id="sub">
                         <img src="images/persons/syrax-logo.png" alt="syrax" class="person-logo" id="syrax">
                     </div>
-                </div>
             </section>
         </main>
     </div>
