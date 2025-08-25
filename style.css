@@ -6,6 +6,9 @@
 html{
     scroll-behavior: smooth;
 }
+body{
+    overflow: hidden;
+}
 .page{
     width: 1200px;
     margin: 0 auto;

@@ -11,6 +11,7 @@ const changeAvatar = document.querySelector('.edit-avatar');
 const enemyBlog = document.querySelector('.enemy-wrap');
 const rename = document.querySelector('.rename');
 const name = document.querySelector('.name-wrap');
+const fightSection = document.querySelector('#fight');
 
 
 
@@ -22,6 +23,8 @@ if(localStorage.getItem('person')){
     document.querySelector('.lose').innerHTML = player.lose;
     document.querySelector('.person__info_logo').innerHTML = `<img src="${player.ava}" alt="sub-zero">`;
     document.querySelector('.fight__player').innerHTML = `<img src="${player.pers}" alt="sub">`;
+
+    window.scrollTo(0, fightSection.offsetTop);
 }
 
 function setName (name){
