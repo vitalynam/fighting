@@ -85,7 +85,7 @@ img{
     width: 25px;
     height: 25px;
     position: absolute;
-    top: 5px;
+    top: 40px;
     left: 5px;
     cursor: pointer;
     background-color: #fff;
@@ -182,4 +182,49 @@ img{
 }
 #enemy-health{
     transform: scaleX(-1);
+}
+.name-settings{
+    position: relative;
+    display: block;
+}
+.name-wrap{
+    opacity: 1;
+    transition: all ease-in-out .5s;
+}
+.name-wrap.active{
+    opacity: 0;
+}
+.rename{
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 0;
+    left: -40px;
+    background-color: #fff;
+    border-radius: 3px;
+    cursor: pointer;
+}
+.rename-form{
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    display: none;
+}
+.rename-form.active{
+    display: block;
+}
+.config{
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+.start{
+    width: 150px;
+    height: 30px;
+    cursor: pointer;
+}
+.white{
+    color: white;
+    font-weight: bolder;
 }

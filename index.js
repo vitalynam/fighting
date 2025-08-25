@@ -9,6 +9,10 @@ const submitButton = document.querySelector('.registration__submit');
 const chose = document.querySelectorAll('.person-logo');
 const changeAvatar = document.querySelector('.edit-avatar');
 const enemyBlog = document.querySelector('.enemy-wrap');
+const rename = document.querySelector('.rename');
+const name = document.querySelector('.name-wrap');
+
+
 
 if(localStorage.getItem('person')){
     let r = localStorage.getItem('person');
@@ -42,7 +46,8 @@ function setLose(counter){
 
 submitButton.addEventListener('click', ()=>{
     player.name = document.querySelector('.registrtion__name').value;
-    setName(player.name)
+    setName(player.name);
+    document.querySelector('.registrtion__name').value = '';
 })
 
 for (const element of chose) {
@@ -58,3 +63,43 @@ changeAvatar.addEventListener('click', ()=>{
     document.querySelector('.person__info_check').classList.toggle('active');
     enemyBlog.classList.toggle('active');
 })
+
+rename.addEventListener('click', ()=>{
+    name.classList.toggle('active');
+    document.querySelector('.rename-form').classList.toggle('active');
+})
+
+document.querySelector('.change-name').addEventListener('click', ()=>{
+    player.name = document.querySelector('.rename-input').value;
+    setName(player.name);
+    document.querySelector('.rename-input').value = '';
+    document.querySelector('.rename-form').classList.remove('active');
+    name.classList.remove('active');
+})
+
+
+
+
+
+let startButton = document.querySelector('.start');
+let enemys = [];
+
+for (const element of chose) {
+    enemys.push(element.id)
+}
+
+startButton.addEventListener('click', ()=>{
+    let person2 = [];
+    let random = Math.floor(Math.random() * 6);
+    if(enemys[random] == person2[0]){
+        let random = Math.floor(Math.random() * 6);
+    }else{
+        person2.push(enemys[random]);
+    }
+    
+    document.querySelector('.enemy__info_logo').innerHTML = `<img src="images/persons/${person2[0]}-logo.png" alt="sub-zero">`;
+    document.querySelector('.enemy__player').innerHTML = `<img src="images/persons/${person2[0]}.gif" alt="sub">`;
+})
+
+
+console.log('Еще не написал логику боя')
