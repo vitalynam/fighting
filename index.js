@@ -28,16 +28,19 @@ function setName (name){
     document.querySelector('.name').innerHTML = name;
     localStorage.setItem('person', JSON.stringify(player));
 }
+
 function setImage(urlLogo , urlPerson){
     document.querySelector('.person__info_logo').innerHTML = `<img src="${urlLogo}" alt="sub-zero">`;
     document.querySelector('.fight__player').innerHTML = `<img src="${urlPerson}" alt="sub">`;
     localStorage.setItem('person', JSON.stringify(player));
 }
+
 function setWins(counter){
     document.querySelector('.wins').innerHTML = `${counter}`;
 
     localStorage.setItem('person', JSON.stringify(player));
 }
+
 function setLose(counter){
     document.querySelector('.lose').innerHTML = `${counter}`;
 
@@ -82,24 +85,31 @@ document.querySelector('.change-name').addEventListener('click', ()=>{
 
 
 let startButton = document.querySelector('.start');
+// Создаем массив с именами персонажей 
 let enemys = [];
-
 for (const element of chose) {
     enemys.push(element.id)
 }
 
+let person2 = ['sub']; // массив с именем противнника
+
+// клик по кнопке STARTBUTTON генерирует рандомного персонажа и отпрвляет имя в переменную PERSON2 
 startButton.addEventListener('click', ()=>{
-    let person2 = [];
-    let random = Math.floor(Math.random() * 6);
-    if(enemys[random] == person2[0]){
-        let random = Math.floor(Math.random() * 6);
-    }else{
-        person2.push(enemys[random]);
-    }
     
+    let random = Math.floor(Math.random() * 6);
+
+    if(enemys[random] == person2[0]){
+        if(random + 1 == 5){
+            person2[0] = enemys[random - 1];
+        }else{
+            person2[0] = enemys[random + 1];
+        }
+    }else{
+        person2[0] = enemys[random];
+    }
     document.querySelector('.enemy__info_logo').innerHTML = `<img src="images/persons/${person2[0]}-logo.png" alt="sub-zero">`;
     document.querySelector('.enemy__player').innerHTML = `<img src="images/persons/${person2[0]}.gif" alt="sub">`;
 })
 
 
-console.log('Еще не написал логику боя')
+console.log(person2)
