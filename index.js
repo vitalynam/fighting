@@ -23,7 +23,6 @@ if(localStorage.getItem('person')){
     document.querySelector('.lose').innerHTML = player.lose;
     document.querySelector('.person__info_logo').innerHTML = `<img src="${player.ava}" alt="sub-zero">`;
     document.querySelector('.fight__player').innerHTML = `<img src="${player.pers}" alt="sub">`;
-
     window.scrollTo(0, fightSection.offsetTop);
 }
 
@@ -87,7 +86,7 @@ document.querySelector('.change-name').addEventListener('click', ()=>{
 
 
 
-let startButton = document.querySelector('.start');
+let changePersonButton = document.querySelector('.change-person');
 // Создаем массив с именами персонажей 
 let enemys = [];
 for (const element of chose) {
@@ -97,7 +96,7 @@ for (const element of chose) {
 let person2 = ['sub']; // массив с именем противнника
 
 // клик по кнопке STARTBUTTON генерирует рандомного персонажа и отпрвляет имя в переменную PERSON2 
-startButton.addEventListener('click', ()=>{
+changePersonButton.addEventListener('click', ()=>{
     
     let random = Math.floor(Math.random() * 6);
 
@@ -115,4 +114,73 @@ startButton.addEventListener('click', ()=>{
 })
 
 
-console.log(person2)
+
+let myChar = {
+    health: 100,
+    damage: 20,
+    atack: 'body',
+    guard: ['arms', 'legs'],
+}
+
+let enemyChar = {
+    health: 100,
+    damage: 20,
+    atack: 'armsss',
+    guard: ['head', 'body'],
+}
+
+let startfight = document.querySelector('.start');
+
+function kumite (playerOne, playerTwo){
+
+    if (playerTwo.guard.includes(playerOne.atack)){
+        playerTwo.health = playerTwo.health - (playerOne.damage / 2);
+        document.querySelector('#enemy').style.width = `${playerTwo.health}%`
+    }
+    else{
+        playerTwo.health = playerTwo.health - playerOne.damage;
+        document.querySelector('#enemy').style.width = `${playerTwo.health}%`
+    }
+
+
+    if (playerOne.guard.includes(playerTwo.atack)){
+        playerOne.health = playerOne.health - (playerTwo.damage / 2);
+        document.querySelector('#main').style.width = `${playerOne.health}%`
+    }
+    else{
+        playerOne.health = playerOne.health - playerTwo.damage;
+        document.querySelector('#main').style.width = `${playerOne.health}%`
+    }
+
+
+    if(playerTwo.health <= 0){
+        playerTwo.health = 100;
+        playerOne.health = 100;
+        document.querySelector('#enemy').style.width = `100%`;
+        document.querySelector('#main').style.width = `100%`;
+
+        player.wins += 1;
+        localStorage.setItem('person', JSON.stringify(player));
+        document.querySelector('.wins').innerHTML = player.wins;
+
+        localStorage.setItem('person', JSON.stringify(player));
+        console.log('you win');
+    }
+
+    if(playerOne.health <= 0){
+        console.log('you lose');
+        playerOne.health = 100;
+        playerTwo.health = 100;
+        document.querySelector('#main').style.width = `100%`;
+        document.querySelector('#enemy').style.width = `100%`;
+
+        player.lose += 1;
+        localStorage.setItem('person', JSON.stringify(player));
+        document.querySelector('.lose').innerHTML = player.lose;
+    }
+}
+
+startfight.addEventListener('click', ()=>{
+    kumite(myChar, enemyChar);
+})
+// kumite(myChar, enemyChar)

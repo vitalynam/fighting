@@ -182,6 +182,7 @@ img{
     transform: scaleX(-1);
     width: 150px;
     height: 350px;
+    margin-right: 80px;
 }
 #enemy-health{
     transform: scaleX(-1);
@@ -230,4 +231,15 @@ img{
 .white{
     color: white;
     font-weight: bolder;
+}
+.change-person{
+    width: 100px;
+    height: 30px;
+    position: absolute;
+    top:  40px;
+    left: 0px;
+    cursor: pointer;
+}
+.enemy__info{
+    position: relative;
 }
