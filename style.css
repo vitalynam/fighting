@@ -81,7 +81,7 @@ img{
     justify-content: space-between;
 }
 .fight__wrap{
-    width: 100%;
+    width: auto;
     position: relative;
 }
 .edit-avatar{
@@ -222,6 +222,9 @@ img{
     height: 100%;
     display: flex;
     align-items: center;
+    flex-direction: column;
+    margin-top: 100px;
+    position: relative;
 }
 .start{
     width: 150px;
@@ -242,4 +245,43 @@ img{
 }
 .enemy__info{
     position: relative;
+}
+.person-number,
+.enemy-number{
+    position: absolute;
+    top: 2px;
+    left: 40%;
+    z-index: 100;
+}
+.enemy-number{
+    transform: scaleX(-1);
+}
+.log-wrap{
+    width: 500px;
+    height: 200px;
+    background-color: #fff;
+    position: absolute;
+    bottom: 130px;
+    left: -135px;
+    overflow-y: scroll;
+}
+.red{
+    color: red;
+    font-size: 18px;
+}
+.green{
+    color: green;
+    font-size: 18px;
+}
+.bold{
+    font-weight: bold;
+    font-size: 18px;
+}
+.blue{
+    color: rgb(0, 101, 253);
+    font-size: 18px;
+}
+.orange{
+    color: orange;
+    font-size: 18px;
 }

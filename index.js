@@ -118,38 +118,69 @@ changePersonButton.addEventListener('click', ()=>{
 let myChar = {
     health: 100,
     damage: 20,
-    atack: 'body',
+    atack: 'legs',
     guard: ['arms', 'legs'],
 }
 
 let enemyChar = {
     health: 100,
     damage: 20,
-    atack: 'armsss',
+    atack: 'arms',
     guard: ['head', 'body'],
 }
 
 let startfight = document.querySelector('.start');
+let mainNumber = document.querySelector('.person-number');
+let enemyNumber = document.querySelector('.enemy-number');
+let log = document.querySelector('.log');
 
 function kumite (playerOne, playerTwo){
 
     if (playerTwo.guard.includes(playerOne.atack)){
         playerTwo.health = playerTwo.health - (playerOne.damage / 2);
-        document.querySelector('#enemy').style.width = `${playerTwo.health}%`
+        document.querySelector('#enemy').style.width = `${playerTwo.health}%`;
+        enemyNumber.innerHTML = playerTwo.health;
+
+        let sss = `<span class="blue">Вы</span> атаковали <span class="red bold">${playerOne.atack}</span>, но <span class="orange">противник</span> блокировал <span class="green bold">${playerTwo.guard[0]}</span> и <span class="green bold">${playerTwo.guard[1]}</span>.<br>
+        Поэтому вы нанесли только половину урона.<br>
+        <span class="blue">Ваш</span> урон = <span class="red bold">${playerOne.damage / 2}</span>.`;
+
+        log.innerHTML += `<p>${sss}</p> <hr>`;
     }
     else{
         playerTwo.health = playerTwo.health - playerOne.damage;
-        document.querySelector('#enemy').style.width = `${playerTwo.health}%`
+        document.querySelector('#enemy').style.width = `${playerTwo.health}%`;
+        enemyNumber.innerHTML = playerTwo.health;
+
+        let sss = `<span class="blue">Вы</span> атаковали <span class="red bold">${playerOne.atack}</span>, <span class="orange">противник</span> блокировал <span class="green bold">${playerTwo.guard[0]}</span> и <span class="green bold">${playerTwo.guard[1]}</span>.<br>
+        Но не блокировал <span class="red bold">${playerOne.atack}</span>.<br>
+        <span class="blue">Ваш</span> урон = <span class="red bold">${playerOne.damage}</span>.`;
+
+        log.innerHTML += `<p>${sss}</p> <hr>`;
     }
 
 
     if (playerOne.guard.includes(playerTwo.atack)){
         playerOne.health = playerOne.health - (playerTwo.damage / 2);
-        document.querySelector('#main').style.width = `${playerOne.health}%`
+        document.querySelector('#main').style.width = `${playerOne.health}%`;
+        mainNumber.innerHTML = playerOne.health;
+
+        let sss = `<span class="orange">Противник</span> атаковал <span class="red bold">${playerTwo.atack}</span>, но <span class="blue">Вы</span> блокировали <span class="green bold">${playerOne.guard[0]}</span> и <span class="green bold">${playerTwo.guard[1]}</span>.<br>
+        Поэтому <span class="blue">Вы</span> получили только половину урона.<br>
+        Урон <span class="orange">противника</span> = <span class="red bold">${playerTwo.damage / 2}</span>.`;
+
+        log.innerHTML += `<p>${sss}</p> <hr>`;
     }
     else{
         playerOne.health = playerOne.health - playerTwo.damage;
-        document.querySelector('#main').style.width = `${playerOne.health}%`
+        document.querySelector('#main').style.width = `${playerOne.health}%`;
+        mainNumber.innerHTML = playerOne.health;
+
+        let sss = `<span class="orange">Противник</span> атаковал <span class="red bold">${playerTwo.atack}</span>, <span class="blue">Вы</span> блокировали <span class="green bold">${playerOne.guard[0]}</span> и <span class="green bold">${playerOne.guard[1]}</span>.<br>
+        Но не блокировали <span class="red bold">${playerTwo.atack}</span>.<br>
+        Урон <span class="orange">противника</span> = <span class="red bold">${playerTwo.damage}</span>.`;
+
+        log.innerHTML += `<p>${sss}</p> <hr>`;
     }
 
 
@@ -158,26 +189,33 @@ function kumite (playerOne, playerTwo){
         playerOne.health = 100;
         document.querySelector('#enemy').style.width = `100%`;
         document.querySelector('#main').style.width = `100%`;
+        enemyNumber.innerHTML = 100;
+        mainNumber.innerHTML = 100;
 
         player.wins += 1;
         localStorage.setItem('person', JSON.stringify(player));
         document.querySelector('.wins').innerHTML = player.wins;
 
         localStorage.setItem('person', JSON.stringify(player));
-        console.log('you win');
+        log.innerHTML += `<p class="green bold">Вы Победили!</p> <hr>`;
     }
 
     if(playerOne.health <= 0){
-        console.log('you lose');
         playerOne.health = 100;
         playerTwo.health = 100;
         document.querySelector('#main').style.width = `100%`;
         document.querySelector('#enemy').style.width = `100%`;
+        enemyNumber.innerHTML = 100;
+        mainNumber.innerHTML = 100;
 
         player.lose += 1;
         localStorage.setItem('person', JSON.stringify(player));
         document.querySelector('.lose').innerHTML = player.lose;
+        log.innerHTML += `<p class="red bold">Вы проиграли!</p> <hr>`;
     }
+    // log.scrollTop = 600;
+    // console.log(log.scrollTop)
+    
 }
 
 startfight.addEventListener('click', ()=>{
