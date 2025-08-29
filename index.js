@@ -12,7 +12,24 @@ const enemyBlog = document.querySelector('.enemy-wrap');
 const rename = document.querySelector('.rename');
 const name = document.querySelector('.name-wrap');
 const fightSection = document.querySelector('#fight');
+let startfight = document.querySelector('.start');
+let mainNumber = document.querySelector('.person-number');
+let enemyNumber = document.querySelector('.enemy-number');
+let log = document.querySelector('.log');
 
+let myChar = {
+    health: 100,
+    damage: 20,
+    atack: 'legs',
+    guard: ['arms', 'legs'],
+}
+
+let enemyChar = {
+    health: 100,
+    damage: 20,
+    atack: 'arms',
+    guard: ['head', 'body'],
+}
 
 
 if(localStorage.getItem('person')){
@@ -24,6 +41,20 @@ if(localStorage.getItem('person')){
     document.querySelector('.person__info_logo').innerHTML = `<img src="${player.ava}" alt="sub-zero">`;
     document.querySelector('.fight__player').innerHTML = `<img src="${player.pers}" alt="sub">`;
     window.scrollTo(0, fightSection.offsetTop);
+}
+if(localStorage.getItem('enemy')){
+    let s = JSON.parse(localStorage.getItem('enemy'));
+
+    document.querySelector('#main').style.width = `${s.mHealth}%`;
+    mainNumber.innerHTML = s.mHealth;
+
+    document.querySelector('#enemy').style.width = `${s.enHealth}%`;
+    enemyNumber.innerHTML = s.enHealth;
+
+    document.querySelector('.enemy__info_logo').innerHTML = `<img src="images/persons/${s.enName}-logo.png" alt="${s.enName}">`;
+    document.querySelector('.enemy__player').innerHTML = `<img src="images/persons/${s.enName}.gif" alt="${s.enName}">`;
+    myChar.health = s.mHealth;
+    enemyChar.health = s.enHealth;
 }
 
 function setName (name){
@@ -95,44 +126,15 @@ for (const element of chose) {
 
 let person2 = ['sub']; // массив с именем противнника
 
-// клик по кнопке STARTBUTTON генерирует рандомного персонажа и отпрвляет имя в переменную PERSON2 
-changePersonButton.addEventListener('click', ()=>{
-    
-    let random = Math.floor(Math.random() * 6);
-
-    if(enemys[random] == person2[0]){
-        if(random + 1 == 5){
-            person2[0] = enemys[random - 1];
-        }else{
-            person2[0] = enemys[random + 1];
-        }
-    }else{
-        person2[0] = enemys[random];
-    }
-    document.querySelector('.enemy__info_logo').innerHTML = `<img src="images/persons/${person2[0]}-logo.png" alt="sub-zero">`;
-    document.querySelector('.enemy__player').innerHTML = `<img src="images/persons/${person2[0]}.gif" alt="sub">`;
-})
 
 
+let allChar = [['kung', 'night'],['shan', 'syrax'],['liu', 'sub']];
 
-let myChar = {
-    health: 100,
-    damage: 20,
-    atack: 'legs',
-    guard: ['arms', 'legs'],
+let fightLocal = {
+    enName: person2[0],
+    enHealth: 100,
+    mHealth: 100,
 }
-
-let enemyChar = {
-    health: 100,
-    damage: 20,
-    atack: 'arms',
-    guard: ['head', 'body'],
-}
-
-let startfight = document.querySelector('.start');
-let mainNumber = document.querySelector('.person-number');
-let enemyNumber = document.querySelector('.enemy-number');
-let log = document.querySelector('.log');
 
 function kumite (playerOne, playerTwo){
 
@@ -170,6 +172,10 @@ function kumite (playerOne, playerTwo){
         Урон <span class="orange">противника</span> = <span class="red bold">${playerTwo.damage / 2}</span>.`;
 
         log.innerHTML += `<p>${sss}</p> <hr>`;
+
+        fightLocal.enHealth = playerTwo.health;
+        fightLocal.mHealth = playerOne.health;
+        localStorage.setItem('enemy', JSON.stringify(fightLocal))
     }
     else{
         playerOne.health = playerOne.health - playerTwo.damage;
@@ -213,12 +219,46 @@ function kumite (playerOne, playerTwo){
         document.querySelector('.lose').innerHTML = player.lose;
         log.innerHTML += `<p class="red bold">Вы проиграли!</p> <hr>`;
     }
-    // log.scrollTop = 600;
-    // console.log(log.scrollTop)
-    
 }
 
 startfight.addEventListener('click', ()=>{
     kumite(myChar, enemyChar);
 })
-// kumite(myChar, enemyChar)
+
+// клик по кнопке STARTBUTTON генерирует рандомного персонажа и отпрвляет имя в переменную PERSON2 
+changePersonButton.addEventListener('click', ()=>{
+    
+    let random = Math.floor(Math.random() * 6);
+
+    if(enemys[random] == person2[0]){
+        if(random + 1 == 5){
+            person2[0] = enemys[random - 1];
+        }else{
+            person2[0] = enemys[random + 1];
+        }
+    }else{
+        person2[0] = enemys[random];
+    }
+    if (allChar[0].includes(person2[0])){
+    enemyChar.damage = 20;
+    }
+    if (allChar[1].includes(person2[0])){
+        enemyChar.damage = 30;
+    }
+    if (allChar[2].includes(person2[0])){
+        enemyChar.damage = 35;
+    }
+    myChar.health = 100;
+    enemyChar.health = 100;
+
+    document.querySelector('.enemy__info_logo').innerHTML = `<img src="images/persons/${person2[0]}-logo.png" alt="${person2[0]}">`;
+    document.querySelector('.enemy__player').innerHTML = `<img src="images/persons/${person2[0]}.gif" alt="${person2[0]}">`;
+    log.innerHTML = `<p></p>`;
+    document.querySelector('#enemy').style.width = `${enemyChar.health}%`;
+    enemyNumber.innerHTML = enemyChar.health;
+    document.querySelector('#main').style.width = `${myChar.health}%`;
+    mainNumber.innerHTML = myChar.health;
+    
+    fightLocal.enName = person2;
+    localStorage.setItem('enemy', JSON.stringify(fightLocal))
+})
