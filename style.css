@@ -285,3 +285,14 @@ img{
     color: orange;
     font-size: 18px;
 }
+.table-atack{
+    background-color: #fff;
+    padding: 15px;
+    font-family: Roboto;
+}
+.label-atack{
+    margin-right: 10px;
+}
+.label-atack:last-child{
+    margin-right: 0;
+}

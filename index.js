@@ -16,6 +16,8 @@ let startfight = document.querySelector('.start');
 let mainNumber = document.querySelector('.person-number');
 let enemyNumber = document.querySelector('.enemy-number');
 let log = document.querySelector('.log');
+let checks = document.querySelectorAll('.input-atack');
+let label = document.querySelectorAll('.label-atack');
 
 let myChar = {
     health: 100,
@@ -137,6 +139,17 @@ let fightLocal = {
 }
 
 function kumite (playerOne, playerTwo){
+    for (const element of checks) {
+    if(element.checked){
+        for (const el of label) {
+            if (element.id === el.getAttribute('for')){
+                console.log(el.textContent)
+                playerOne.atack = el.textContent;
+            }
+            
+        }
+    }
+}
 
     if (playerTwo.guard.includes(playerOne.atack)){
         playerTwo.health = playerTwo.health - (playerOne.damage / 2);
@@ -262,3 +275,6 @@ changePersonButton.addEventListener('click', ()=>{
     fightLocal.enName = person2;
     localStorage.setItem('enemy', JSON.stringify(fightLocal))
 })
+
+
+
